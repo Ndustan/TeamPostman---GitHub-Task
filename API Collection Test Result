@@ -1,0 +1,758 @@
+{
+	"id": "cb47341f-a8d9-448e-a212-e511d4900bab",
+	"name": "APICollection",
+	"timestamp": "2022-05-25T12:26:06.745Z",
+	"collection_id": "17888549-4bdc9121-96db-4485-9d67-94f2d2f93ebe",
+	"folder_id": 0,
+	"environment_id": "17888549-864ebfc2-5df8-4f7e-a26e-e5c233c59a19",
+	"totalPass": 53,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "54160f12-db4b-49e9-b541-fa590d43cd2b",
+			"name": "Get All Todo Entries",
+			"url": "https://demo.fusio-project.org/index.php/todo",
+			"time": 1317,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Verify that success in response body is false": true,
+				"Verify that title in response body is Internal Server Error": true,
+				"Verify that message in response body is Unknown location": true,
+				"Status code should be 404": true,
+				"Status code name should have Not Found": true,
+				"Response time is more than 200ms": true,
+				"Success in the Response body returns Boolean": true
+			},
+			"testPassFailCounts": {
+				"Verify that success in response body is false": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that title in response body is Internal Server Error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that message in response body is Unknown location": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code should be 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should have Not Found": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is more than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Success in the Response body returns Boolean": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1317
+			],
+			"allTests": [
+				{
+					"Verify that success in response body is false": true,
+					"Verify that title in response body is Internal Server Error": true,
+					"Verify that message in response body is Unknown location": true,
+					"Status code should be 404": true,
+					"Status code name should have Not Found": true,
+					"Response time is more than 200ms": true,
+					"Success in the Response body returns Boolean": true
+				}
+			]
+		},
+		{
+			"id": "084bba67-6b2f-41cc-8cdd-3f180d77e81e",
+			"name": "Get All Entries",
+			"url": "https://demo.fusio-project.org/index.php",
+			"time": 300,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code should be 200": true,
+				"Status code name should have OK": true,
+				"Response time is more than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should have OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is more than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				300
+			],
+			"allTests": [
+				{
+					"Status code should be 200": true,
+					"Status code name should have OK": true,
+					"Response time is more than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "0d13ec9f-de7b-410b-8ba6-2666edf7bd7d",
+			"name": "Get entry per ID - Valid ID",
+			"url": "https://demo.fusio-project.org/index.php/todo/?todo_id=2",
+			"time": 242,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code should be 404": true,
+				"Status code name should have Not Found": true,
+				"Response time is more than 200ms": true,
+				"Success in the Response body returns Boolean": true
+			},
+			"testPassFailCounts": {
+				"Status code should be 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should have Not Found": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is more than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Success in the Response body returns Boolean": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				242
+			],
+			"allTests": [
+				{
+					"Status code should be 404": true,
+					"Status code name should have Not Found": true,
+					"Response time is more than 200ms": true,
+					"Success in the Response body returns Boolean": true
+				}
+			]
+		},
+		{
+			"id": "9506c81d-edd8-45cc-a46e-7196e21ee5d4",
+			"name": "Get entry per ID - Invalid ID(params not using TODO ID)",
+			"url": "https://demo.fusio-project.org/index.php/todo/?todo_id=2",
+			"time": 202,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code should be 404": true,
+				"Status code name should have Not Found": true,
+				"Response time is more than 200ms": true,
+				"Success in the Response body returns Boolean": true
+			},
+			"testPassFailCounts": {
+				"Status code should be 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should have Not Found": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is more than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Success in the Response body returns Boolean": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				202
+			],
+			"allTests": [
+				{
+					"Status code should be 404": true,
+					"Status code name should have Not Found": true,
+					"Response time is more than 200ms": true,
+					"Success in the Response body returns Boolean": true
+				}
+			]
+		},
+		{
+			"id": "eab8f527-5e45-40ff-ad0d-10a9856e0856",
+			"name": "Get Books - valid book type",
+			"url": "https://simple-books-api.glitch.me/books?type=fiction&limit=10",
+			"time": 1587,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code should be 200": true,
+				"Status code name should have OK": true,
+				"Response time is more than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should have OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is more than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1587
+			],
+			"allTests": [
+				{
+					"Status code should be 200": true,
+					"Status code name should have OK": true,
+					"Response time is more than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "40071cbb-1710-4df7-b5d1-0f1cc27b8313",
+			"name": "Get Books - invalid book type",
+			"url": "https://simple-books-api.glitch.me/books?type=romance",
+			"time": 352,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code should be 400": true,
+				"Status code name should have Bad Request": true,
+				"Response time is more than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code should be 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should have Bad Request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is more than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				352
+			],
+			"allTests": [
+				{
+					"Status code should be 400": true,
+					"Status code name should have Bad Request": true,
+					"Response time is more than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "23690846-fbc1-4d5d-b55c-a4bddf895b45",
+			"name": "Place a book order - using valid book ID and invalid bearer token",
+			"url": "https://simple-books-api.glitch.me/orders",
+			"time": 489,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code should be 201": true,
+				"Status code name should have Created": true,
+				"Response time is more than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code should be 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should have Created": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is more than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				489
+			],
+			"allTests": [
+				{
+					"Status code should be 201": true,
+					"Status code name should have Created": true,
+					"Response time is more than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "7c671148-1bd2-4642-8309-f4a8eb50dba8",
+			"name": "Place a book order - using invalid book ID",
+			"url": "https://simple-books-api.glitch.me/orders",
+			"time": 506,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code should be 401": true,
+				"Status code name should have Unauthorized": true,
+				"Response time is more than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code should be 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should have Unauthorized": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is more than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				506
+			],
+			"allTests": [
+				{
+					"Status code should be 401": true,
+					"Status code name should have Unauthorized": true,
+					"Response time is more than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "1d78bad6-d6ab-4833-9c22-95d244acbc68",
+			"name": "Place a book order - using no book ID",
+			"url": "https://simple-books-api.glitch.me/orders",
+			"time": 472,
+			"responseCode": {
+				"code": 422,
+				"name": "Unprocessable Entity"
+			},
+			"tests": {
+				"Status code should be 422": true,
+				"Status code name should have Unprocessable Entity": true,
+				"Response time is more than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code should be 422": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should have Unprocessable Entity": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is more than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				472
+			],
+			"allTests": [
+				{
+					"Status code should be 422": true,
+					"Status code name should have Unprocessable Entity": true,
+					"Response time is more than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "ad490f88-6c32-4929-a3d2-1678502ee8cc",
+			"name": "New Request",
+			"url": "https://simple-books-api.glitch.me/api-clients",
+			"time": 510,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				510
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "1938ecb5-d8ec-4962-a0bf-065e5b81a418",
+			"name": "Get all orders",
+			"url": "https://simple-books-api.glitch.me/orders",
+			"time": 467,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code should be 401": true,
+				"Status code name should have Unauthorized": true,
+				"Response time is more than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code should be 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should have Unauthorized": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is more than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				467
+			],
+			"allTests": [
+				{
+					"Status code should be 401": true,
+					"Status code name should have Unauthorized": true,
+					"Response time is more than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "9246b486-84fd-4bda-8af6-387c16754054",
+			"name": "Get an order - using a valid order number",
+			"url": "https://simple-books-api.glitch.me/orders/io419UvEO6_3RmddIapvq",
+			"time": 378,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code should be 200": true,
+				"Status code name should have OK": true,
+				"Response time is more than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code should be 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should have OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is more than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				378
+			],
+			"allTests": [
+				{
+					"Status code should be 200": true,
+					"Status code name should have OK": true,
+					"Response time is more than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "e528c782-4dfe-4dfb-85e6-41d7f814d002",
+			"name": "Get an order - using an invalid order number",
+			"url": "https://simple-books-api.glitch.me/orders/adeyi",
+			"time": 1080,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code should be 401": true,
+				"Status code name should have Unauthorized": true,
+				"Response time is more than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code should be 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should have Unauthorized": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is more than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1080
+			],
+			"allTests": [
+				{
+					"Status code should be 401": true,
+					"Status code name should have Unauthorized": true,
+					"Response time is more than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "c73c6146-9c7a-4a7a-a000-d43444e8a3c4",
+			"name": "Get an order - using no order ID",
+			"url": "https://simple-books-api.glitch.me/orders/",
+			"time": 938,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code should be 401": true,
+				"Status code name should have Unauthorized": true,
+				"Response time is more than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code should be 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should have Unauthorized": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is more than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				938
+			],
+			"allTests": [
+				{
+					"Status code should be 401": true,
+					"Status code name should have Unauthorized": true,
+					"Response time is more than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "37bd285d-d139-4e12-b335-092b21655bf1",
+			"name": "Delete an order - using valid order ID",
+			"url": "https://simple-books-api.glitch.me/orders/io419UvEO6_3RmddIapvq",
+			"time": 1236,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status code is 204": true,
+				"Status code name has string No Content": true
+			},
+			"testPassFailCounts": {
+				"Status code is 204": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has string No Content": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1236
+			],
+			"allTests": [
+				{
+					"Status code is 204": true,
+					"Status code name has string No Content": true
+				}
+			]
+		},
+		{
+			"id": "89e2081f-c9be-4e9f-991c-346f69acfe23",
+			"name": "Delete an order - using invalid order ID",
+			"url": "https://simple-books-api.glitch.me/orders/adeyi",
+			"time": 288,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Status code should be 401": true,
+				"Status code name should have Unauthorized": true,
+				"Response time is more than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code should be 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should have Unauthorized": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is more than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				288
+			],
+			"allTests": [
+				{
+					"Status code should be 401": true,
+					"Status code name should have Unauthorized": true,
+					"Response time is more than 200ms": true
+				}
+			]
+		},
+		{
+			"id": "2f51aaab-9aa9-4c03-a303-f56e06c968c2",
+			"name": "Delete an order - using no order ID",
+			"url": "https://simple-books-api.glitch.me/orders/",
+			"time": 319,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code should be 404": true,
+				"Status code name should have Not Found": true,
+				"Response time is more than 200ms": true
+			},
+			"testPassFailCounts": {
+				"Status code should be 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name should have Not Found": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is more than 200ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				319
+			],
+			"allTests": [
+				{
+					"Status code should be 404": true,
+					"Status code name should have Not Found": true,
+					"Response time is more than 200ms": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 10683,
+	"collection": {
+		"requests": [
+			{
+				"id": "54160f12-db4b-49e9-b541-fa590d43cd2b",
+				"method": "GET"
+			},
+			{
+				"id": "084bba67-6b2f-41cc-8cdd-3f180d77e81e",
+				"method": "GET"
+			},
+			{
+				"id": "0d13ec9f-de7b-410b-8ba6-2666edf7bd7d",
+				"method": "GET"
+			},
+			{
+				"id": "9506c81d-edd8-45cc-a46e-7196e21ee5d4",
+				"method": "GET"
+			},
+			{
+				"id": "eab8f527-5e45-40ff-ad0d-10a9856e0856",
+				"method": "GET"
+			},
+			{
+				"id": "40071cbb-1710-4df7-b5d1-0f1cc27b8313",
+				"method": "GET"
+			},
+			{
+				"id": "23690846-fbc1-4d5d-b55c-a4bddf895b45",
+				"method": "POST"
+			},
+			{
+				"id": "7c671148-1bd2-4642-8309-f4a8eb50dba8",
+				"method": "POST"
+			},
+			{
+				"id": "1d78bad6-d6ab-4833-9c22-95d244acbc68",
+				"method": "POST"
+			},
+			{
+				"id": "ad490f88-6c32-4929-a3d2-1678502ee8cc",
+				"method": "POST"
+			},
+			{
+				"id": "1938ecb5-d8ec-4962-a0bf-065e5b81a418",
+				"method": "GET"
+			},
+			{
+				"id": "9246b486-84fd-4bda-8af6-387c16754054",
+				"method": "GET"
+			},
+			{
+				"id": "e528c782-4dfe-4dfb-85e6-41d7f814d002",
+				"method": "GET"
+			},
+			{
+				"id": "c73c6146-9c7a-4a7a-a000-d43444e8a3c4",
+				"method": "GET"
+			},
+			{
+				"id": "37bd285d-d139-4e12-b335-092b21655bf1",
+				"method": "DELETE"
+			},
+			{
+				"id": "89e2081f-c9be-4e9f-991c-346f69acfe23",
+				"method": "DELETE"
+			},
+			{
+				"id": "2f51aaab-9aa9-4c03-a303-f56e06c968c2",
+				"method": "DELETE"
+			}
+		]
+	}
+}
