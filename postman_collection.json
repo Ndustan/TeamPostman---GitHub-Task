@@ -1,0 +1,1044 @@
+{
+	"info": {
+		"_postman_id": "4bdc9121-96db-4485-9d67-94f2d2f93ebe",
+		"name": "APICollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17888549"
+	},
+	"item": [
+		{
+			"name": "Fusio",
+			"item": [
+				{
+					"name": "Get All Todo Entries",
+					"item": [
+						{
+							"name": "Get All Todo Entries",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = pm.response.json();",
+											"",
+											"pm.environment.set(\"Success\",false);",
+											"",
+											"pm.environment.set(\"Title\",\"Inetrnal Server Error\");",
+											"",
+											"pm.environment.set(\"Message\",\"Unknown location\");",
+											"",
+											"console.log",
+											"",
+											"console.log(jsonData)",
+											"",
+											"console.log(jsonData.success)",
+											"",
+											"console.log(jsonData.title)",
+											"",
+											"console.log(jsonData.message)",
+											"",
+											"pm.test(\"Verify that success in response body is false\", function () {",
+											"    pm.expect(jsonData.success).to.eql(false);",
+											"})",
+											"",
+											"pm.test(\"Verify that title in response body is Internal Server Error\", function () {",
+											"    pm.expect(jsonData.title).to.eql(\"Internal Server Error\");",
+											"});",
+											"",
+											"pm.test(\"Verify that message in response body is Unknown location\", function () {",
+											"    pm.expect(jsonData.message).to.eql(\"Unknown location\");",
+											"});",
+											"",
+											"pm.test(\"Status code should be 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});",
+											"",
+											"pm.test(\"Status code name should have Not Found\", function () {",
+											"    pm.response.to.have.status(\"Not Found\");",
+											"});",
+											"",
+											"pm.test(\"Response time is more than 200ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.above(200);",
+											"});",
+											"",
+											"pm.test(\"Success in the Response body returns Boolean\", function () {",
+											"    pm.expect(pm.response.text()).to.include(false);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/todo",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"todo"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get All Entries",
+					"item": [
+						{
+							"name": "Get All Entries",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code should be 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name should have OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is more than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}",
+									"host": [
+										"{{baseUrl}}"
+									]
+								},
+								"description": "https://demo.fusio-project.org/index.php/"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get entry per ID",
+					"item": [
+						{
+							"name": "Get entry per ID - Valid ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code should be 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name should have Not Found\", function () {\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is more than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Success in the Response body returns Boolean\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(false);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/todo/?todo_id=2",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"todo",
+										""
+									],
+									"query": [
+										{
+											"key": "todo_id",
+											"value": "2"
+										}
+									]
+								},
+								"description": "https://demo.fusio-project.org/index.php/todo/:todo_id"
+							},
+							"response": []
+						},
+						{
+							"name": "Get entry per ID - Invalid ID(params not using TODO ID)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code should be 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name should have Not Found\", function () {\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is more than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Success in the Response body returns Boolean\", function () {\r",
+											"    pm.expect(pm.response.text()).to.include(false);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/todo/?todo_id=2",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"todo",
+										""
+									],
+									"query": [
+										{
+											"key": "todo_id",
+											"value": "2"
+										}
+									]
+								},
+								"description": "https://demo.fusio-project.org/index.php/todo/:todo_id"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Simplebooks",
+			"item": [
+				{
+					"name": "Get Books",
+					"item": [
+						{
+							"name": "Get Books - valid book type",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();\r",
+											"console.log\r",
+											"console.log(response);\r",
+											"console.log(response[2].id);\r",
+											"pm.environment.set(\"BookID\",response[2].id);\r",
+											"\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code should be 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name should have OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is more than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlSimplebooks}}/books?type=fiction&limit=10",
+									"host": [
+										"{{baseUrlSimplebooks}}"
+									],
+									"path": [
+										"books"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "fiction"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Books - invalid book type",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code should be 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name should have Bad Request\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is more than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrlSimplebooks}}/books?type=romance",
+									"host": [
+										"{{baseUrlSimplebooks}}"
+									],
+									"path": [
+										"books"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "romance"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Place a book order",
+					"item": [
+						{
+							"name": "Place a book order - using valid book ID and invalid bearer token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const response = pm.response.json();\r",
+											"console.log(response.orderId);\r",
+											"pm.environment.set(\"OrderID\", response.orderId);\r",
+											"\r",
+											"\r",
+											"pm.test(\"Status code should be 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name should have Created\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is more than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"bookId\": {{BookID}},\n  \"customerName\": \"Gbadeyan Okoli\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrlSimplebooks}}/orders",
+									"host": [
+										"{{baseUrlSimplebooks}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Place a book order - using invalid book ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code should be 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name should have Unauthorized\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is more than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "03c5abfe090876ab74a2a2ac4c079174a35fd88c9b88cd2164ff4b9d56c31d6c",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"bookId\": 150,\n  \"customerName\": \"John\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrlSimplebooks}}/orders",
+									"host": [
+										"{{baseUrlSimplebooks}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Place a book order - using no book ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code should be 422\", function () {\r",
+											"    pm.response.to.have.status(422);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name should have Unprocessable Entity\", function () {\r",
+											"    pm.response.to.have.status(\"Unprocessable Entity\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is more than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "03c5abfe090876ab74a2a2ac4c079174a35fd88c9b88cd2164ff4b9d56c31d6c",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"bookId\": \n  \"customerName\": \"John\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrlSimplebooks}}/orders",
+									"host": [
+										"{{baseUrlSimplebooks}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"clientName\": \"{{$randomFirstName}}\",\r\n   \"clientEmail\": \"{{$randomFirstName}}@example.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrlSimplebooks}}/api-clients",
+									"host": [
+										"{{baseUrlSimplebooks}}"
+									],
+									"path": [
+										"api-clients"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get all orders",
+					"item": [
+						{
+							"name": "Get all orders",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code should be 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name should have Unauthorized\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is more than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "03c5abfe090876ab74a2a2ac4c079174a35fd88c9b88cd2164ff4b9d56c31d6c",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrlSimplebooks}}/orders",
+									"host": [
+										"{{baseUrlSimplebooks}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get an order",
+					"item": [
+						{
+							"name": "Get an order - using a valid order number",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code should be 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name should have OK\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is more than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerName\": \"John\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrlSimplebooks}}/orders/:orderId",
+									"host": [
+										"{{baseUrlSimplebooks}}"
+									],
+									"path": [
+										"orders",
+										":orderId"
+									],
+									"variable": [
+										{
+											"key": "orderId",
+											"value": "{{OrderID}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get an order - using an invalid order number",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code should be 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name should have Unauthorized\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is more than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "03c5abfe090876ab74a2a2ac4c079174a35fd88c9b88cd2164ff4b9d56c31d6c",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerName\": \"John\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrlSimplebooks}}/orders/:orderId",
+									"host": [
+										"{{baseUrlSimplebooks}}"
+									],
+									"path": [
+										"orders",
+										":orderId"
+									],
+									"variable": [
+										{
+											"key": "orderId",
+											"value": "adeyi"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get an order - using no order ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code should be 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name should have Unauthorized\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is more than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "03c5abfe090876ab74a2a2ac4c079174a35fd88c9b88cd2164ff4b9d56c31d6c",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerName\": \"John\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrlSimplebooks}}/orders/:orderId",
+									"host": [
+										"{{baseUrlSimplebooks}}"
+									],
+									"path": [
+										"orders",
+										":orderId"
+									],
+									"variable": [
+										{
+											"key": "orderId",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Delete an order",
+					"item": [
+						{
+							"name": "Delete an order - using valid order ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 204\", function () {\r",
+											"    pm.response.to.have.status(204);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string No Content\", function () {\r",
+											"    pm.response.to.have.status(\"No Content\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{Token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrlSimplebooks}}/orders/:orderId",
+									"host": [
+										"{{baseUrlSimplebooks}}"
+									],
+									"path": [
+										"orders",
+										":orderId"
+									],
+									"variable": [
+										{
+											"key": "orderId",
+											"value": "{{OrderID}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an order - using invalid order ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code should be 401\", function () {\r",
+											"    pm.response.to.have.status(401);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name should have Unauthorized\", function () {\r",
+											"    pm.response.to.have.status(\"Unauthorized\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is more than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "03c5abfe090876ab74a2a2ac4c079174a35fd88c9b88cd2164ff4b9d56c31d6c",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrlSimplebooks}}/orders/:orderId",
+									"host": [
+										"{{baseUrlSimplebooks}}"
+									],
+									"path": [
+										"orders",
+										":orderId"
+									],
+									"variable": [
+										{
+											"key": "orderId",
+											"value": "adeyi"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete an order - using no order ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code should be 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name should have Not Found\", function () {\r",
+											"    pm.response.to.have.status(\"Not Found\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is more than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.above(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "03c5abfe090876ab74a2a2ac4c079174a35fd88c9b88cd2164ff4b9d56c31d6c",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrlSimplebooks}}/orders/:orderId",
+									"host": [
+										"{{baseUrlSimplebooks}}"
+									],
+									"path": [
+										"orders",
+										":orderId"
+									],
+									"variable": [
+										{
+											"key": "orderId",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

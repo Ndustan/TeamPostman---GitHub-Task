@@ -1,0 +1,445 @@
+Microsoft Windows [Version 10.0.22000.675]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\HON SOLOMON NWACHUK>cd C:\Users\HON SOLOMON NWACHUK\TeamPostman---GitHub-Task\TeamPostman---GitHub-Task
+
+C:\Users\HON SOLOMON NWACHUK\TeamPostman---GitHub-Task\TeamPostman---GitHub-Task>newman run postman_collection.json -e postman_environment.json
+newman
+
+APICollection
+
+□ Fusio / Get All Todo Entries
+└ Get All Todo Entries
+  GET /todo [errored]
+     Invalid URI "http:///todo"
+  2⠄ JSONError in test-script
+
+□ Fusio / Get All Entries
+└ Get All Entries
+  GET  [errored]
+     runtime:extensions~request: request url is empty
+  4. Status code should be 200
+  5. Status code name should have OK
+  6. Response time is more than 200ms
+
+□ Fusio / Get entry per ID
+└ Get entry per ID - Valid ID
+  GET /todo/?todo_id=2 [errored]
+     Invalid URI "http:///todo/?todo_id=2"
+  8. Status code should be 404
+  9. Status code name should have Not Found
+ 10. Response time is more than 200ms
+ 11. Success in the Response body returns Boolean
+
+└ Get entry per ID - Invalid ID(params not using TODO ID)
+  GET /todo/?todo_id=2 [errored]
+     Invalid URI "http:///todo/?todo_id=2"
+ 13. Status code should be 404
+ 14. Status code name should have Not Found
+ 15. Response time is more than 200ms
+ 16. Success in the Response body returns Boolean
+
+□ Simplebooks / Get Books
+└ Get Books - valid book type
+  GET /books?type=fiction&limit=10 [errored]
+     Invalid URI "http:///books?type=fiction&limit=10"
+ 18⠄ JSONError in test-script
+
+└ Get Books - invalid book type
+  GET /books?type=romance [errored]
+     Invalid URI "http:///books?type=romance"
+ 20. Status code should be 400
+ 21. Status code name should have Bad Request
+ 22. Response time is more than 200ms
+
+□ Simplebooks / Place a book order
+└ Place a book order - using valid book ID and invalid bearer token
+  POST /orders [errored]
+     Invalid URI "http:///orders"
+ 24⠄ JSONError in test-script
+
+└ Place a book order - using invalid book ID
+  POST /orders [errored]
+     Invalid URI "http:///orders"
+ 26. Status code should be 401
+ 27. Status code name should have Unauthorized
+ 28. Response time is more than 200ms
+
+└ Place a book order - using no book ID
+  POST /orders [errored]
+     Invalid URI "http:///orders"
+ 30. Status code should be 422
+ 31. Status code name should have Unprocessable Entity
+ 32. Response time is more than 200ms
+
+└ New Request
+  POST /api-clients [errored]
+     Invalid URI "http:///api-clients"
+
+□ Simplebooks / Get all orders
+└ Get all orders
+  GET /orders [errored]
+     Invalid URI "http:///orders"
+ 35. Status code should be 401
+ 36. Status code name should have Unauthorized
+ 37. Response time is more than 200ms
+
+□ Simplebooks / Get an order
+└ Get an order - using a valid order number
+  GET /orders/ [errored]
+     Invalid URI "http:///orders/"
+ 39. Status code should be 200
+ 40. Status code name should have OK
+ 41. Response time is more than 200ms
+
+└ Get an order - using an invalid order number
+  GET /orders/adeyi [errored]
+     Invalid URI "http:///orders/adeyi"
+ 43. Status code should be 401
+ 44. Status code name should have Unauthorized
+ 45. Response time is more than 200ms
+
+└ Get an order - using no order ID
+  GET /orders/ [errored]
+     Invalid URI "http:///orders/"
+ 47. Status code should be 401
+ 48. Status code name should have Unauthorized
+ 49. Response time is more than 200ms
+
+□ Simplebooks / Delete an order
+└ Delete an order - using valid order ID
+  DELETE /orders/ [errored]
+     Invalid URI "http:///orders/"
+ 51. Status code is 204
+ 52. Status code name has string No Content
+
+└ Delete an order - using invalid order ID
+  DELETE /orders/adeyi [errored]
+     Invalid URI "http:///orders/adeyi"
+ 54. Status code should be 401
+ 55. Status code name should have Unauthorized
+ 56. Response time is more than 200ms
+
+└ Delete an order - using no order ID
+  DELETE /orders/ [errored]
+     Invalid URI "http:///orders/"
+ 58. Status code should be 404
+ 59. Status code name should have Not Found
+ 60. Response time is more than 200ms
+
+┌─────────────────────────┬──────────┬──────────┐
+│                         │ executed │   failed │
+├─────────────────────────┼──────────┼──────────┤
+│              iterations │        1 │        0 │
+├─────────────────────────┼──────────┼──────────┤
+│                requests │       17 │       17 │
+├─────────────────────────┼──────────┼──────────┤
+│            test-scripts │       16 │        3 │
+├─────────────────────────┼──────────┼──────────┤
+│      prerequest-scripts │        0 │        0 │
+├─────────────────────────┼──────────┼──────────┤
+│              assertions │       40 │       40 │
+├─────────────────────────┴──────────┴──────────┤
+│ total run duration: 1704ms                    │
+├───────────────────────────────────────────────┤
+│ total data received: 0B (approx)              │
+└───────────────────────────────────────────────┘
+
+   #  failure                detail
+
+ 01.  Error                  Invalid URI "http:///todo"
+                             at request
+                             inside "Fusio / Get All Todo Entries / Get All Todo Entries"
+
+ 02.  JSONError              Unexpected token u in JSON at position 0
+                             at test-script
+                             inside "Fusio / Get All Todo Entries / Get All Todo Entries"
+
+ 03.  Error                  runtime:extensions~request: request url is empty
+                             at request
+                             inside "Fusio / Get All Entries / Get All Entries"
+
+ 04.  AssertionError         Status code should be 200
+                             expected { Object (id, _details, ...) } to have property 'code'
+                             at assertion:0 in test-script
+                             inside "Fusio / Get All Entries / Get All Entries"
+
+ 05.  AssertionError         Status code name should have OK
+                             expected response to have status reason 'OK' but got undefined
+                             at assertion:1 in test-script
+                             inside "Fusio / Get All Entries / Get All Entries"
+
+ 06.  AssertionError         Response time is more than 200ms
+                             expected undefined to be a number or a date
+                             at assertion:2 in test-script
+                             inside "Fusio / Get All Entries / Get All Entries"
+
+ 07.  Error                  Invalid URI "http:///todo/?todo_id=2"
+                             at request
+                             inside "Fusio / Get entry per ID / Get entry per ID - Valid ID"
+
+ 08.  AssertionError         Status code should be 404
+                             expected { Object (id, _details, ...) } to have property 'code'
+                             at assertion:0 in test-script
+                             inside "Fusio / Get entry per ID / Get entry per ID - Valid ID"
+
+ 09.  AssertionError         Status code name should have Not Found
+                             expected response to have status reason 'Not Found' but got undefined
+                             at assertion:1 in test-script
+                             inside "Fusio / Get entry per ID / Get entry per ID - Valid ID"
+
+ 10.  AssertionError         Response time is more than 200ms
+                             expected undefined to be a number or a date
+                             at assertion:2 in test-script
+                             inside "Fusio / Get entry per ID / Get entry per ID - Valid ID"
+
+ 11.  AssertionError         Success in the Response body returns Boolean
+                             the given combination of arguments (undefined and boolean) is invalid for this
+                             assertion. You can use an array, a map, an object, a set, a string, or a weakset
+                             instead of a boolean
+                             at assertion:3 in test-script
+                             inside "Fusio / Get entry per ID / Get entry per ID - Valid ID"
+
+ 12.  Error                  Invalid URI "http:///todo/?todo_id=2"
+                             at request
+                             inside "Fusio / Get entry per ID / Get entry per ID - Invalid ID(params not using
+                             TODO ID)"
+
+ 13.  AssertionError         Status code should be 404
+                             expected { Object (id, _details, ...) } to have property 'code'
+                             at assertion:0 in test-script
+                             inside "Fusio / Get entry per ID / Get entry per ID - Invalid ID(params not using
+                             TODO ID)"
+
+ 14.  AssertionError         Status code name should have Not Found
+                             expected response to have status reason 'Not Found' but got undefined
+                             at assertion:1 in test-script
+                             inside "Fusio / Get entry per ID / Get entry per ID - Invalid ID(params not using
+                             TODO ID)"
+
+ 15.  AssertionError         Response time is more than 200ms
+                             expected undefined to be a number or a date
+                             at assertion:2 in test-script
+                             inside "Fusio / Get entry per ID / Get entry per ID - Invalid ID(params not using
+                             TODO ID)"
+
+ 16.  AssertionError         Success in the Response body returns Boolean
+                             the given combination of arguments (undefined and boolean) is invalid for this
+                             assertion. You can use an array, a map, an object, a set, a string, or a weakset
+                             instead of a boolean
+                             at assertion:3 in test-script
+                             inside "Fusio / Get entry per ID / Get entry per ID - Invalid ID(params not using
+                             TODO ID)"
+
+ 17.  Error                  Invalid URI "http:///books?type=fiction&limit=10"
+                             at request
+                             inside "Simplebooks / Get Books / Get Books - valid book type"
+
+ 18.  JSONError              Unexpected token u in JSON at position 0
+                             at test-script
+                             inside "Simplebooks / Get Books / Get Books - valid book type"
+
+ 19.  Error                  Invalid URI "http:///books?type=romance"
+                             at request
+                             inside "Simplebooks / Get Books / Get Books - invalid book type"
+
+ 20.  AssertionError         Status code should be 400
+                             expected { Object (id, _details, ...) } to have property 'code'
+                             at assertion:0 in test-script
+                             inside "Simplebooks / Get Books / Get Books - invalid book type"
+
+ 21.  AssertionError         Status code name should have Bad Request
+                             expected response to have status reason 'Bad Request' but got undefined
+                             at assertion:1 in test-script
+                             inside "Simplebooks / Get Books / Get Books - invalid book type"
+
+ 22.  AssertionError         Response time is more than 200ms
+                             expected undefined to be a number or a date
+                             at assertion:2 in test-script
+                             inside "Simplebooks / Get Books / Get Books - invalid book type"
+
+ 23.  Error                  Invalid URI "http:///orders"
+                             at request
+                             inside "Simplebooks / Place a book order / Place a book order - using valid book ID
+                             and invalid bearer token"
+
+ 24.  JSONError              Unexpected token u in JSON at position 0
+                             at test-script
+                             inside "Simplebooks / Place a book order / Place a book order - using valid book ID
+                             and invalid bearer token"
+
+ 25.  Error                  Invalid URI "http:///orders"
+                             at request
+                             inside "Simplebooks / Place a book order / Place a book order - using invalid book
+                             ID"
+
+ 26.  AssertionError         Status code should be 401
+                             expected { Object (id, _details, ...) } to have property 'code'
+                             at assertion:0 in test-script
+                             inside "Simplebooks / Place a book order / Place a book order - using invalid book
+                             ID"
+
+ 27.  AssertionError         Status code name should have Unauthorized
+                             expected response to have status reason 'Unauthorized' but got undefined
+                             at assertion:1 in test-script
+                             inside "Simplebooks / Place a book order / Place a book order - using invalid book
+                             ID"
+
+ 28.  AssertionError         Response time is more than 200ms
+                             expected undefined to be a number or a date
+                             at assertion:2 in test-script
+                             inside "Simplebooks / Place a book order / Place a book order - using invalid book
+                             ID"
+
+ 29.  Error                  Invalid URI "http:///orders"
+                             at request
+                             inside "Simplebooks / Place a book order / Place a book order - using no book ID"
+
+ 30.  AssertionError         Status code should be 422
+                             expected { Object (id, _details, ...) } to have property 'code'
+                             at assertion:0 in test-script
+                             inside "Simplebooks / Place a book order / Place a book order - using no book ID"
+
+ 31.  AssertionError         Status code name should have Unprocessable Entity
+                             expected response to have status reason 'Unprocessable Entity' but got undefined
+                             at assertion:1 in test-script
+                             inside "Simplebooks / Place a book order / Place a book order - using no book ID"
+
+ 32.  AssertionError         Response time is more than 200ms
+                             expected undefined to be a number or a date
+                             at assertion:2 in test-script
+                             inside "Simplebooks / Place a book order / Place a book order - using no book ID"
+
+ 33.  Error                  Invalid URI "http:///api-clients"
+                             at request
+                             inside "Simplebooks / Place a book order / New Request"
+
+ 34.  Error                  Invalid URI "http:///orders"
+                             at request
+                             inside "Simplebooks / Get all orders / Get all orders"
+
+ 35.  AssertionError         Status code should be 401
+                             expected { Object (id, _details, ...) } to have property 'code'
+                             at assertion:0 in test-script
+                             inside "Simplebooks / Get all orders / Get all orders"
+
+ 36.  AssertionError         Status code name should have Unauthorized
+                             expected response to have status reason 'Unauthorized' but got undefined
+                             at assertion:1 in test-script
+                             inside "Simplebooks / Get all orders / Get all orders"
+
+ 37.  AssertionError         Response time is more than 200ms
+                             expected undefined to be a number or a date
+                             at assertion:2 in test-script
+                             inside "Simplebooks / Get all orders / Get all orders"
+
+ 38.  Error                  Invalid URI "http:///orders/"
+                             at request
+                             inside "Simplebooks / Get an order / Get an order - using a valid order number"
+
+ 39.  AssertionError         Status code should be 200
+                             expected { Object (id, _details, ...) } to have property 'code'
+                             at assertion:0 in test-script
+                             inside "Simplebooks / Get an order / Get an order - using a valid order number"
+
+ 40.  AssertionError         Status code name should have OK
+                             expected response to have status reason 'OK' but got undefined
+                             at assertion:1 in test-script
+                             inside "Simplebooks / Get an order / Get an order - using a valid order number"
+
+ 41.  AssertionError         Response time is more than 200ms
+                             expected undefined to be a number or a date
+                             at assertion:2 in test-script
+                             inside "Simplebooks / Get an order / Get an order - using a valid order number"
+
+ 42.  Error                  Invalid URI "http:///orders/adeyi"
+                             at request
+                             inside "Simplebooks / Get an order / Get an order - using an invalid order number"
+
+ 43.  AssertionError         Status code should be 401
+                             expected { Object (id, _details, ...) } to have property 'code'
+                             at assertion:0 in test-script
+                             inside "Simplebooks / Get an order / Get an order - using an invalid order number"
+
+ 44.  AssertionError         Status code name should have Unauthorized
+                             expected response to have status reason 'Unauthorized' but got undefined
+                             at assertion:1 in test-script
+                             inside "Simplebooks / Get an order / Get an order - using an invalid order number"
+
+ 45.  AssertionError         Response time is more than 200ms
+                             expected undefined to be a number or a date
+                             at assertion:2 in test-script
+                             inside "Simplebooks / Get an order / Get an order - using an invalid order number"
+
+ 46.  Error                  Invalid URI "http:///orders/"
+                             at request
+                             inside "Simplebooks / Get an order / Get an order - using no order ID"
+
+ 47.  AssertionError         Status code should be 401
+                             expected { Object (id, _details, ...) } to have property 'code'
+                             at assertion:0 in test-script
+                             inside "Simplebooks / Get an order / Get an order - using no order ID"
+
+ 48.  AssertionError         Status code name should have Unauthorized
+                             expected response to have status reason 'Unauthorized' but got undefined
+                             at assertion:1 in test-script
+                             inside "Simplebooks / Get an order / Get an order - using no order ID"
+
+ 49.  AssertionError         Response time is more than 200ms
+                             expected undefined to be a number or a date
+                             at assertion:2 in test-script
+                             inside "Simplebooks / Get an order / Get an order - using no order ID"
+
+ 50.  Error                  Invalid URI "http:///orders/"
+                             at request
+                             inside "Simplebooks / Delete an order / Delete an order - using valid order ID"
+
+ 51.  AssertionError         Status code is 204
+                             expected { Object (id, _details, ...) } to have property 'code'
+                             at assertion:0 in test-script
+                             inside "Simplebooks / Delete an order / Delete an order - using valid order ID"
+
+ 52.  AssertionError         Status code name has string No Content
+                             expected response to have status reason 'No Content' but got undefined
+                             at assertion:1 in test-script
+                             inside "Simplebooks / Delete an order / Delete an order - using valid order ID"
+
+ 53.  Error                  Invalid URI "http:///orders/adeyi"
+                             at request
+                             inside "Simplebooks / Delete an order / Delete an order - using invalid order ID"
+
+ 54.  AssertionError         Status code should be 401
+                             expected { Object (id, _details, ...) } to have property 'code'
+                             at assertion:0 in test-script
+                             inside "Simplebooks / Delete an order / Delete an order - using invalid order ID"
+
+ 55.  AssertionError         Status code name should have Unauthorized
+                             expected response to have status reason 'Unauthorized' but got undefined
+                             at assertion:1 in test-script
+                             inside "Simplebooks / Delete an order / Delete an order - using invalid order ID"
+
+ 56.  AssertionError         Response time is more than 200ms
+                             expected undefined to be a number or a date
+                             at assertion:2 in test-script
+                             inside "Simplebooks / Delete an order / Delete an order - using invalid order ID"
+
+ 57.  Error                  Invalid URI "http:///orders/"
+                             at request
+                             inside "Simplebooks / Delete an order / Delete an order - using no order ID"
+
+ 58.  AssertionError         Status code should be 404
+                             expected { Object (id, _details, ...) } to have property 'code'
+                             at assertion:0 in test-script
+                             inside "Simplebooks / Delete an order / Delete an order - using no order ID"
+
+ 59.  AssertionError         Status code name should have Not Found
+                             expected response to have status reason 'Not Found' but got undefined
+                             at assertion:1 in test-script
+                             inside "Simplebooks / Delete an order / Delete an order - using no order ID"
+
+ 60.  AssertionError         Response time is more than 200ms
+                             expected undefined to be a number or a date
+                             at assertion:2 in test-script
+                             inside "Simplebooks / Delete an order / Delete an order - using no order ID"
+
+C:\Users\HON SOLOMON NWACHUK\TeamPostman---GitHub-Task\TeamPostman---GitHub-Task>
